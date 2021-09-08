@@ -1,0 +1,9 @@
+import { Component, createElement } from "../lib/react/index.js";
+import styled from "../lib/styled-components.js";
+
+export default styled.input`
+  font-size: 1rem;
+  font-family: system-ui;
+  padding: 0.5em 1em;
+  flex: 1;
+`;
