@@ -13,3 +13,24 @@ export const discountCalories = (value) => ({
     value,
   },
 });
+
+export const addMovies = (value) => ({
+  type: actions.ADD_MOVIES,
+  payload: {
+    value,
+  },
+});
+
+export const setFilter = (value) => ({
+  type: actions.SET_FILTER,
+  payload: {
+    value,
+  },
+});
+
+export const searchMovie = (value) => ({
+  type: actions.SEARCH_MOVIE,
+  payload: {
+    value,
+  },
+});

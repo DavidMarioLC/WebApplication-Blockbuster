@@ -2,8 +2,8 @@ import { createStore } from "./redux/index.js";
 import { reducer } from "./reducers/index.js";
 import movies from "./movies.js";
 import {
-  getAllIds,
   movieListAsMap,
+  getAllIds,
   getMostValuedIds,
   getLeastValuedIds,
 } from "./normalize.js";

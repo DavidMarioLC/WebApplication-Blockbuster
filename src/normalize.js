@@ -1,11 +1,11 @@
-function movieListAsMap(newlist) {
+function movieListAsMap(newlist, oldList = new Map()) {
   return newlist.reduce((accumulator, movie) => {
     return accumulator.set(movie.id, movie);
-  }, new Map());
+  }, oldList);
 }
 
-function getAllIds(list) {
-  return list.map((movie) => movie.id);
+function getAllIds(list, oldList = []) {
+  return oldList.concat(list.map((movie) => movie.id));
 }
 
 const accumulatorPopular = (accumulator, movie) => {
@@ -16,41 +16,19 @@ const accumulatorPopular = (accumulator, movie) => {
   return accumulator;
 };
 
-function getMostValuedIds(list) {
-  return list.reduce(accumulatorPopular, []);
+function getMostValuedIds(list, oldList = []) {
+  return list.reduce(accumulatorPopular, oldList);
 }
 
 const accumulatorNotPopular = (accumulator, movie) => {
-  if (movie.vote_average <= 7) {
+  if (movie.vote_average < 7) {
     accumulator = [...accumulator, movie.id];
   }
   return accumulator;
 };
 
-function getLeastValuedIds(list) {
-  return list.reduce(accumulatorNotPopular, []);
+function getLeastValuedIds(list, oldList = []) {
+  return list.reduce(accumulatorNotPopular, oldList);
 }
 
-// let popularList = [...rawMoviesList].sort((a, b) =>
-//   a.vote_average > b.vote_average ? -1 : 1
-// );
-// let notPopularList = [...popularList].reverse();
-
-// const moviesPopular =
-
-// console.log(moviesPopular);
-// console.log(moviesNotPopular);
-
-// console.log(allMovies);
-
-// console.log(movieList);
-
-export {
-  movieListAsMap,
-  getAllIds,
-  getMostValuedIds,
-  getLeastValuedIds,
-  // allMovies,
-  // moviesPopular,
-  // moviesNotPopular
-};
+export { movieListAsMap, getAllIds, getMostValuedIds, getLeastValuedIds };
